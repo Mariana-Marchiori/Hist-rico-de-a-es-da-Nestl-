@@ -103,11 +103,26 @@ st.markdown(
 # UPLOAD
 # ==================================================
 
+import streamlit as st
+import pandas as pd
+from pathlib import Path
+
+st.title("Histórico de ações da Nestlé")
+
 arquivo = st.file_uploader(
-    "📁 Selecione o arquivo CSV",
+    "Deseja enviar outro arquivo CSV?",
     type=["csv"]
 )
 
+if arquivo is not None:
+    df = pd.read_csv(arquivo)
+else:
+    caminho_csv = Path(__file__).parent / "dados" / "nestle.csv"
+    df = pd.read_csv(caminho_csv)
+
+st.success("Dados carregados com sucesso!")
+
+# A partir daqui, utilize df nos gráficos e indicadores.
 
 st.markdown("""
 ### 🏢 Conheça a Nestlé
