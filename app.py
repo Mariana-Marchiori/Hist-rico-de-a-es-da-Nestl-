@@ -103,29 +103,26 @@ st.markdown(
 # UPLOAD
 # ==================================================
 
-from pathlib import Path
-import pandas as pd
+
 import streamlit as st
+import pandas as pd
+from pathlib import Path
 
-caminho_csv = Path(__file__).parent / "dados" / "nestle.csv"
+# Caminho do CSV que já está no GitHub
+caminho_csv = Path(__file__).parent / "Nestle_historical_data.csv"
 
-arquivo = st.file_uploader(
-    "Deseja enviar outro arquivo CSV?",
-    type=["csv"]
-)
+# Carrega os dados automaticamente
+@st.cache_data
+def carregar_dados():
+    return pd.read_csv(caminho_csv)
 
-if arquivo is not None:
-    df = pd.read_csv(arquivo)
-elif caminho_csv.exists():
-    df = pd.read_csv(caminho_csv)
-else:
-    st.error(
-        "A base de dados padrão não foi encontrada. "
-        "Verifique se o arquivo CSV está no GitHub."
-    )
-    st.stop()
+df = carregar_dados()
 
-st.success("Dados carregados com sucesso!")
+st.success("Dados históricos carregados com sucesso!")
+
+# A partir daqui, mantenha os gráficos e indicadores
+# do seu dashboard usando o DataFrame df.
+
 
 # Mantenha abaixo os gráficos e indicadores do seu dashboard.
 # A partir daqui, utilize df nos gráficos e indicadores.
