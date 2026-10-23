@@ -130,7 +130,7 @@ relacionados à empresa e a entender como os indicadores variam ao longo dos ano
 
 st.markdown("### O que você encontrará no painel")
 
-    c1, c2, c3 = st.columns(3)
+c1, c2, c3 = st.columns(3)
 
     c1.markdown(
         "**📈 Evolução histórica**\n\n"
