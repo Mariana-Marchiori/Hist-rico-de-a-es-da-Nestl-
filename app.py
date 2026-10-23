@@ -103,13 +103,19 @@ st.markdown(
 # UPLOAD
 # ==================================================
 
-from pathlib import Path
-import pandas as pd
 import streamlit as st
+import pandas as pd
+from pathlib import Path
 
-caminho_csv = Path(__file__).parent / "Nestle_historical_data.csv"
+@st.cache_data
+def carregar_dados():
+    caminho = Path(__file__).parent / "Nestle_historical_data.csv"
+    if not caminho.exists():
+        st.error(f"Arquivo não encontrado: {caminho}")
+        st.stop()
+    return pd.read_csv(caminho)
 
-df = pd.read_csv(caminho_csv)
+df = carregar_dados()
 
 #########################################
 
