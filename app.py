@@ -133,8 +133,8 @@ relacionados à empresa e a entender como os indicadores variam ao longo dos ano
         # LEITURA E TRATAMENTO
         # ==================================================
 
-        df = pd.read_csv(caminho_csv)
-        df.columns = df.columns.astype(str).str.strip()
+df = pd.read_csv(caminho_csv)
+df.columns = df.columns.astype(str).str.strip()
 
         if df.empty:
             st.warning("O arquivo está vazio.")
