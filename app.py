@@ -128,13 +128,7 @@ diferentes etapas da vida. Neste projeto, o dashboard ajuda a observar dados his
 relacionados à empresa e a entender como os indicadores variam ao longo dos anos.
 """)
 
-if arquivo is None:
-    st.info(
-        "Envie o CSV para visualizar os gráficos, comparar anos "
-        "e consultar as cinco principais informações."
-    )
-
-    st.markdown("### O que você encontrará no painel")
+st.markdown("### O que você encontrará no painel")
 
     c1, c2, c3 = st.columns(3)
 
