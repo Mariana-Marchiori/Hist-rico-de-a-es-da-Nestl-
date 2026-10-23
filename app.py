@@ -103,29 +103,13 @@ st.markdown(
 # UPLOAD
 # ==================================================
 
-
-import streamlit as st
-import pandas as pd
-import plotly.express as px
 from pathlib import Path
+import pandas as pd
+import streamlit as st
 
-# Carrega automaticamente o CSV que está no GitHub,
-# na mesma pasta deste arquivo app.py.
-CAMINHO_CSV = Path(__file__).parent / "Nestle_historical_data.csv"
+caminho_csv = Path(__file__).parent / "Nestle_historical_data.csv"
 
-@st.cache_data
-def carregar_dados():
-    return pd.read_csv(CAMINHO_CSV)
-
-if not CAMINHO_CSV.exists():
-    st.error(
-        "Não foi possível encontrar o arquivo "
-        "Nestle_historical_data.csv. Verifique se ele está "
-        "na mesma pasta do app.py no GitHub."
-    )
-    st.stop()
-
-df = carregar_dados()
+df = pd.read_csv(caminho_csv)
 
 #########################################
 
