@@ -128,27 +128,7 @@ diferentes etapas da vida. Neste projeto, o dashboard ajuda a observar dados his
 relacionados à empresa e a entender como os indicadores variam ao longo dos anos.
 """)
 
-st.markdown("### O que você encontrará no painel")
 
-  c1, c2, c3 = st.columns(3)
-
-    c1.markdown(
-        "**📈 Evolução histórica**\n\n"
-        "Veja como um indicador muda ao longo do tempo."
-    )
-
-    c2.markdown(
-        "**📊 Variação anual**\n\n"
-        "Identifique períodos de crescimento ou queda."
-    )
-
-    c3.markdown(
-        "Escolha o ano de sua preferência"
-        "Consulte os cinco principais resultados do período."
-    )
-
-else:
-    try:
         # ==================================================
         # LEITURA E TRATAMENTO
         # ==================================================
