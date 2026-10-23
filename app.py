@@ -106,26 +106,28 @@ st.markdown(
 
 import streamlit as st
 import pandas as pd
+import plotly.express as px
 from pathlib import Path
 
-# Caminho do CSV que já está no GitHub
-caminho_csv = Path(__file__).parent / "Nestle_historical_data.csv"
+# Carrega automaticamente o CSV que está no GitHub,
+# na mesma pasta deste arquivo app.py.
+CAMINHO_CSV = Path(__file__).parent / "Nestle_historical_data.csv"
 
-# Carrega os dados automaticamente
 @st.cache_data
 def carregar_dados():
-    return pd.read_csv(caminho_csv)
+    return pd.read_csv(CAMINHO_CSV)
+
+if not CAMINHO_CSV.exists():
+    st.error(
+        "Não foi possível encontrar o arquivo "
+        "Nestle_historical_data.csv. Verifique se ele está "
+        "na mesma pasta do app.py no GitHub."
+    )
+    st.stop()
 
 df = carregar_dados()
 
-st.success("Dados históricos carregados com sucesso!")
-
-# A partir daqui, mantenha os gráficos e indicadores
-# do seu dashboard usando o DataFrame df.
-
-
-# Mantenha abaixo os gráficos e indicadores do seu dashboard.
-# A partir daqui, utilize df nos gráficos e indicadores.
+#########################################
 
 st.markdown("""
 ### 🏢 Conheça a Nestlé
